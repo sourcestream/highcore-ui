@@ -1,0 +1,91 @@
+<md-dialog aria-label="{{stack.name}}" edit-stack>
+    <md-toolbar
+            data-ng-include="'views/common/_dialog_header.html'">
+    </md-toolbar>
+    <md-dialog-content>
+
+        <form name="mainForm">
+            <div layout="row">
+                <div flex="1">
+                    <div class="md-subhead">General</div>
+                    <div layout="row">
+                        <md-input-container flex="10">
+                            <label>Id</label>
+                            <input ng-model="stack.id" readonly>
+                        </md-input-container>
+
+                        <md-input-container flex="90">
+                            <label>Name</label>
+                            <input name="name" ng-model="stack.name" required>
+
+                            <div ng-messages="stack.name.$error">
+                                <div ng-message="required">message</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <div flex>
+                            <md-input-container>
+                                <label>Template</label>
+                                <md-select flex ng-model="stack.template_id">
+                                    <md-option ng-value="template.id" ng-repeat="template in templates">{{ template.name }}</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 20px">
+
+                            <label>Reference stacks</label>
+                            <md-chips ng-model="stack.stacks" md-autocomplete-snap md-require-match flex>
+                                <md-autocomplete
+                                        md-search-text="ctrl.searchText"
+                                        md-items="item in querySearch(ctrl.searchText)"
+                                        md-item-text="item.name">
+                                    <span md-highlight-text="ctrl.searchText">{{item.name}}</span>
+                                </md-autocomplete>
+                                <md-chip-template>
+                                    <span>
+                                      <strong>{{$chip.name}}</strong>
+                                    </span>
+                                </md-chip-template>
+                            </md-chips>
+                    </div>
+                    <div layout="row">
+                        <md-input-container flex="1">
+                            <label>created at</label>
+                            <input ng-model="stack.created_at" readonly>
+                        </md-input-container>
+                        <md-input-container flex="1">
+                            <label>updated at</label>
+                            <input ng-model="stack.updated_at" readonly>
+                        </md-input-container>
+                    </div>
+                    <!-- <div flex="1">
+                        <p>Stack relations</p>
+                        <md-chips ng-model="stack.stacks"
+                                  placeholder="Enter a tag"
+                                  delete-button-label="Remove Tag"
+                                  delete-hint="Press delete to remove tag"
+                                  secondary-placeholder="+Tag">
+                            <md-chip-template>
+                                <strong>{{$chip.name}}</strong>
+                            </md-chip-template>
+                        </md-chips>
+                    </div> -->
+                </div>
+
+                <div flex="1"
+                     data-ng-if="stack.parameters"
+
+                     data-ng-include="'views/parameters/_parameters_list.html'"
+                     data-ng-init="parameters = stack.parameters">
+                </div>
+            </div>
+        </form>
+    </md-dialog-content>
+    <div class="md-actions" class="row">
+        <md-button data-ng-click="removeStack(stack, $event)" ng-if="stack.id" class="md-raised md-warn">Remove</md-button>
+        <span flex></span>
+        <md-button data-ng-click="saveStack(stack, $event)" class="md-raised md-primary" ng-disabled="!mainForm.$valid">Save</md-button>
+    </div>
+</md-dialog>

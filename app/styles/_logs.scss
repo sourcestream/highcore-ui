@@ -1,0 +1,60 @@
+/*
+[data-component-id="stack-logs"] {
+  position: absolute;
+  top: rem-calc(50);
+  right: rem-calc(20);
+  bottom: rem-calc(100);
+
+  overflow: scroll;
+  width: rem-calc(500);
+  @include opacity(0.9);
+}*/
+
+/*[data-component-id="logs-list"] {
+  @include opacity(0.9);
+  @include box-shadow();
+  position: absolute;
+  top: rem-calc(48);
+  width: rem-calc(500);
+  right: 0;
+  bottom: rem-calc(84);
+}*/
+
+
+
+*[data-component-id="logs-container"] {
+  *[data-component-id="logs-toolbar"] {
+    //background-color: #008CBA;
+    //position: fixed;
+    //top: 0;
+    //width: 100%;
+  }
+  *[data-component-id="logs-list"] {
+    //margin-top: rem-calc(48);
+  }
+}
+
+
+@mixin log-pill() {
+  @include inline-block();
+  @include border-radius(rem-calc(5));
+  padding: rem-calc(6);
+}
+
+.pill {
+  @include log-pill();
+  color: gray;
+  background-color: yellow;
+  &.timestamp {
+    background-color: #008CBA;
+    color: white;
+  }
+  &.state-complete {
+    background-color: green;
+    color: white;
+  }
+  &.state-failed {
+    color: white;
+    background-color: red;
+  }
+}

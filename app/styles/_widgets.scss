@@ -1,0 +1,24 @@
+[ressource-summary] {
+  [data-component-id="widget-container"] {
+    margin-bottom: rem-calc(18);
+    .widget-group-title {
+      padding: rem-calc(10);
+      background-color: #008CBA;
+      color: white;
+      text-transform: uppercase;
+    }
+    .widget-content {
+      background-color: white;
+      margin-top: rem-calc(4);
+      padding: rem-calc(10);
+      > span {
+        font-size: 12px;
+      }
+
+    }
+  }
+}
+
+[data-component-id="widget-container"] {
+  margin-bottom: rem-calc(16);
+}

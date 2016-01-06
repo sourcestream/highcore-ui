@@ -1,0 +1,26 @@
+<svg stack-grid id="grid" flex>
+    <rect x="10" y="12" fill="gray" width="200" height="24" rx="5" ry="5"></rect>
+    <text x="20" y="30" fill="white">{{stack.status.operation}} {{stack.status.state}}</text>
+    <g>
+        <g data-ng-dblclick="editComponent(component)" instance data-ng-repeat="component in stack.components"
+           component-id="{{component.id}}">
+
+            <g widget data-ng-if="component.status"></g>
+
+            <circle component-ui="container" r=50 cy=50 cx=50 fill="white"></circle>
+            <g component-animation>
+                <circle cx="20" cy="20" fill="gray" r="4"></circle>
+            </g>
+            <circle component-ui="connector" connector-type="origin" r=10 cy=10 cx=10 fill="yellow"></circle>
+            <circle component-ui="connector" connector-type="target" r=50 cy=50 cx=50 fill-opacity="0"></circle>
+
+            <g>
+                <rect x="0" y="104" fill="gray" width="100" height="24" rx="5" ry="5"></rect>
+                <text x="6" y="121" component-ui="title">{{component.id}}</text>
+            </g>
+
+            <g component-status data-ng-if="component.status"></g>
+
+        </g>
+    </g>
+</svg>

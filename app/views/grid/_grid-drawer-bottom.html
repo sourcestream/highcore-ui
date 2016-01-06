@@ -1,0 +1,33 @@
+<md-content data-component-id="drawer"
+            data-drawer-position="bottom"
+            data-drawer-id="grid-bottom"
+            data-drawer-state="closed"
+            layout="column">
+
+    <section data-component-id="drawer-navigation" layout="row" data-ng-click="toggleDrawer('grid-bottom')">
+        <md-button class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-src="images/icons/settings.svg"></md-icon>
+        </md-button>
+        <span flex></span>
+    </section>
+
+    <section flex data-component-id="drawer-content" layout="column">
+        <md-tabs flex>
+            <md-tab label="Logs">
+                <div data-component-id="charts" data-ng-controller="StackChartsCtrl"
+                     data-ng-include="'views/stack/_charts.html'">
+                </div>
+            </md-tab>
+            <md-tab label="Outputs" ng-disabled="true">
+
+            </md-tab>
+            <md-tab label="Parameters" ng-disabled="true">
+
+            </md-tab>
+            <md-tab label="Versions" ng-disabled="true">
+
+            </md-tab>
+        </md-tabs>
+    </section>
+
+</md-content>

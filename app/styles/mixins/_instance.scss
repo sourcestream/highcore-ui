@@ -1,0 +1,53 @@
+$default-instance-size : rem-calc(200) !default;
+$default-instance-margin : rem-calc(10) !default;
+$default-instance-border-size: rem-calc(5) !default;
+
+@mixin instance() {
+  //margin: $default-instance-margin;
+  @include inline-block();
+  height: $default-instance-size;
+  width: $default-instance-size;
+  border: $default-instance-border-size solid #008CBA;
+  background-color: #f8f8ff;
+  cursor: hand;
+  padding: rem-calc(5);
+
+  ul {
+    font-size: rem-calc(10);
+    margin-left: rem-calc(4);
+  }
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+ul.draggable-objects {
+  @include inline-list();
+}
+
+[ng-drag] {
+  @include instance();
+  &.dragging {
+    opacity: 0.5;
+  }
+  &.drag-over{
+    //border:solid 1px red;
+  }
+}
+[ng-drop]{
+  height: 300px;
+  position: relative;
+  &.drag-enter{
+    border: solid 1px red;
+  }
+  margin-top: rem-calc(10);
+}
+
+[ng-drop] div{
+  position: absolute;
+}
+
+
+

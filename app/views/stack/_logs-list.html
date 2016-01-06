@@ -1,0 +1,29 @@
+
+<div flex data-component-id="logs-container" data-ng-controller="StackLogsCtrl">
+    <div layout="row" data-component-id="logs-toolbar" class="md-sticky">
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+            <md-icon md-svg-src="images/icons/search.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-src="images/icons/reload.svg" data-ng-click="reloadList(stack.id)"></md-icon>
+        </md-button>
+    </div>
+    <md-list>
+        <div>
+            <md-subheader class="md-no-sticky">
+                {{component}}
+            </md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="entry in logs.logs">
+                <div class="md-list-item-text">
+                    <p>
+                        <span data-ng-if="entry.timestamp" class="pill timestamp" >{{ entry.timestamp | date:'yyyy-MM-dd HH:mm:ss Z' }} </span>
+                        <span data-ng-if="entry.status.operation || entry.status.state" class="pill state-{{ entry.status.state | lowercase }}">{{ entry.status.operation }} {{ entry.status.state }} </span><br/>
+                        <span data-ng-if="entry.logical_resource_id">Resource: {{ entry.logical_resource_id }} </span>
+                        <span data-ng-if="entry.status.reason"><br/><i>Reason:{{ entry.status.reason }} </i> </span>
+                    </p>
+                </div>
+            </md-list-item>
+        </div>
+    </md-list>
+</div>

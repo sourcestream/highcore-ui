@@ -1,0 +1,22 @@
+<div ng-drag="true" ng-drag-data="templateComponent" data-allow-transform="true">
+    {{templateComponent.id}}
+
+    <label>parameters</label>
+    <ul ng-repeat="param in templateComponent.parameters">
+        <li>
+            {{param.id}} = {{param.default}}
+            <ul ng-if="param.allowed_values">
+                <li data-ng-repeat="option in param.allowed_values">
+                    {{option}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <label data-ng-if="templateComponent.dependencies">dependencies</label>
+    <ul class="inline-list" data-ng-if="templateComponent.dependencies && templateComponent.dependencies.allowed_values">
+        <li data-ng-repeat="option in obj.dependencies.allowed_values">
+            {{option}} &nbsp;
+        </li>
+    </ul>
+</div>

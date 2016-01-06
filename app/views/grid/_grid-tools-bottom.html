@@ -1,0 +1,33 @@
+<section layout="row" layout-padding data-component-id="grid-tools-bottom">
+    <span flex></span>
+    <md-button class="md-fab md-primary" aria-label="download template" ng-click="downloadTemplate()">
+        <md-icon md-svg-src="images/icons/download.svg"></md-icon>
+        <md-tooltip>
+            Download template
+        </md-tooltip>
+    </md-button>
+    <md-button class="md-fab" aria-label="add component" ng-click="toggleTemplateComponents()">
+        <md-icon md-svg-src="images/icons/add.svg"></md-icon>
+        <md-tooltip>
+            Add component
+        </md-tooltip>
+    </md-button>
+    <md-button class="md-fab md-primary" aria-label="save stack" ng-click="saveStack()">
+        <md-icon md-svg-src="images/icons/save.svg"></md-icon>
+        <md-tooltip>
+            Save
+        </md-tooltip>
+    </md-button>
+    <md-button class="md-fab md-warn" aria-label="deploy stack" ng-click="provisionStack()">
+        <md-icon md-svg-src="images/icons/save.svg"></md-icon>
+        <md-tooltip>
+            Provision stack
+        </md-tooltip>
+    </md-button>
+    <md-button class="md-fab md-warn" aria-label="deploy stack" ng-click="deprovisionStack()">
+        <md-icon md-svg-src="images/icons/delete.svg"></md-icon>
+        <md-tooltip>
+            Deprovision stack
+        </md-tooltip>
+    </md-button>
+</section>

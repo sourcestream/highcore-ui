@@ -1,0 +1,160 @@
+$default-stack-height: rem-calc(600);
+$default-grid-height: rem-calc(2000);
+
+$default-grid-offset: 0; //( $default-stack-height - $default-grid-height ) / 2;
+
+$default-component-border-size: rem-calc(2);
+$default-component-size: rem-calc(100);
+$default-component-border: $default-component-border-size solid deepskyblue;
+
+
+@mixin component() {
+  width: $default-component-size;
+  height: $default-component-size;
+  display: block;
+  cursor: pointer;
+  border: $default-component-border;
+  @include border-radius($default-component-size / 2);
+  font-size: rem-calc(12);
+}
+
+g[instance] {
+  g[widget] {
+    > * {
+      fill-opacity: 0;
+    }
+  }
+  &:hover {
+    g[widget] {
+      > * {
+        fill-opacity: 0.7 !important;
+      }
+    }
+  }
+}
+
+templates {
+  //text-align: center;
+  //display: block;
+  position: fixed;
+  //left: 0;
+  //background-color: white;
+  //width: rem-calc(200);
+  //bottom: 0;
+  //top: $default-toolbar-height;
+  z-index: 900;
+  template-component {
+    @include clearfix();
+    position: relative;
+    display: block;
+    @include component();
+    @include inline-block();
+    border: rem-calc(2) solid coral;
+    z-index: 1000;
+    margin: rem-calc(5);
+    line-height: $default-component-size - $default-component-border-size;
+    text-align: center;
+
+  }
+}
+
+md-sidenav {
+  z-index: 10000;
+}
+
+md-mask-container {
+  display: none;
+  text-align: center;
+  position: absolute;
+  top: $default-toolbar-size;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  @include opacity(0.6);
+  z-index: 100;
+  md-progress-circular {
+    position: absolute; /* or absolute */
+    top: 50%;
+    left: 50%;
+    @include inline-block();
+    margin-top: rem-calc($default-toolbar-size + 100)  / - 2;
+    margin-bottom: $default-toolbar-size;
+  }
+}
+md-dialog[edit-component] {
+  min-width: rem-calc(1000) !important;
+}
+
+md-dialog[edit-component], md-dialog[edit-project], md-dialog[edit-environment], md-dialog[edit-stack] {
+  min-width: rem-calc(800);
+  md-dialog-content {
+    //padding: 0;
+    //min-height: rem-calc(300);
+  }
+  md-switch {
+    padding-left: rem-calc(6);
+    margin: 0;
+    padding-top: rem-calc(22);
+    padding-bottom: rem-calc(31);
+  }
+  md-checkbox {
+    margin: 0;
+    margin-left: rem-calc(6);
+
+    padding-top: rem-calc(20);
+    padding-bottom: rem-calc(31);
+  }
+  md-tab-content {
+    //padding: rem-calc(10);
+    //min-height: rem-calc(400);
+  }
+  md-tabs-content-wrapper {
+    //min-height: rem-calc(400);
+  }
+  .md-actions {
+    padding-left: 0;
+    padding-right: rem-calc(8);
+  }
+}
+
+[grid-controls] {
+  position: fixed;
+  right: rem-calc(10);
+  top: rem-calc(74);
+  z-index: 100;
+
+  [grid-action] {
+    cursor: pointer;
+    background-color: #f8f8ff;
+    width: rem-calc(30);
+    height: rem-calc(30);
+    @include inline-block();
+    line-height: rem-calc(30);
+    font-size: rem-calc(10);
+    text-align: center;
+    margin-left: rem-calc(2);
+  }
+}
+
+md-sidenav {
+  min-width: rem-calc(200);
+  width: rem-calc(240);
+}
+
+
+/*md-toolbar {
+  min-height: $default-toolbar-height;
+  height: $default-toolbar-height;
+  .md-toolbar-tools {
+    min-height: $default-toolbar-height;
+    height: $default-toolbar-height;
+  }
+}*/
+
+md-sidenav[md-component-id="templateComponents"] {
+  overflow: visible;
+}
+
+
+

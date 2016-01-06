@@ -1,0 +1,22 @@
+<md-content layout="row" layout-align="center" flex>
+    <md-card>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">{{project.name}} \ {{ environment.name }}</h2>
+                <span flex></span>
+                <md-button data-ng-click="showStackDetails()"
+                           class="md-raised md-primary" aria-label="create stack">
+                    create stack
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-tabs md-dynamic-height md-border-bottom flex>
+            <md-tab>
+                <md-tab-label>Stacks</md-tab-label>
+                <md-tab-body>
+                    <div data-ng-include="'views/stack/_stack_list.html'"></div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </md-card>
+</md-content>

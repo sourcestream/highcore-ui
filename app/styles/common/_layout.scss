@@ -1,0 +1,10 @@
+.layout-max-width {
+  width: 100%;
+  max-width: 1200px;
+}
+
+md-card {
+  position: relative;
+  width: 100%;
+  max-width: rem-calc(1200);
+}

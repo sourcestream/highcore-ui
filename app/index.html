@@ -1,0 +1,98 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/json-formatter/dist/json-formatter.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/app.css -->
+    <link rel="stylesheet" href="styles/app.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="highcoreWebUI" layout="column">
+        <div ng-controller="NavigationCtrl">
+            <md-sidenav class="md-whiteframe-z1"
+                        ng-include="'views/navigation/_main_navigation.html'"
+                        md-component-id="mainNavigation">
+            </md-sidenav>
+
+            <div data-ng-include="'views/navigation/_toolbar.html'"  ng-if="user"></div>
+        </div>
+
+        <md-mask-container>
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </md-mask-container>
+
+        <md-content flex ng-view="" layout="row"></md-content>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/json-formatter/dist/json-formatter.js"></script>
+    <script src="bower_components/snap.svg/dist/snap.svg-min.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
+    <script src="bower_components/Chart.js/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/grid.js"></script>
+        <script src="scripts/directives/instance.js"></script>
+        <script src="scripts/controllers/stack.js"></script>
+        <script src="scripts/services/stackservice.js"></script>
+        <script src="scripts/filters/findbyid.js"></script>
+        <script src="scripts/services/componentservice.js"></script>
+        <script src="scripts/directives/component.js"></script>
+        <script src="scripts/directives/stackgrid.js"></script>
+        <script src="scripts/directives/templatecomponent.js"></script>
+        <script src="scripts/directives/widget.js"></script>
+        <script src="scripts/services/stacklogsservice.js"></script>
+        <script src="scripts/controllers/component.js"></script>
+        <script src="scripts/controllers/navigation.js"></script>
+        <script src="scripts/controllers/project.js"></script>
+        <script src="scripts/services/projectservice.js"></script>
+        <script src="scripts/services/environmentservice.js"></script>
+        <script src="scripts/controllers/environment.js"></script>
+        <script src="scripts/services/gridservice.js"></script>
+        <script src="scripts/services/templateservice.js"></script>
+        <script src="scripts/controllers/parameter.js"></script>
+        <script src="scripts/directives/component-status.js"></script>
+        <script src="scripts/controllers/stacklogs.js"></script>
+        <script src="scripts/controllers/stackcharts.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/directives/ressource-summary.js"></script>
+        <script src="scripts/services/drawerservice.js"></script>
+        <script src="scripts/services/errorhandler.js"></script>
+        <script src="scripts/services/templatecomponentservice.js"></script>
+        <script src="scripts/controllers/auth.js"></script>
+        <script src="scripts/services/userservice.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

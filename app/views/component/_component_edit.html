@@ -1,0 +1,53 @@
+<md-dialog aria-label="{{activeComponent.id}}" edit-component>
+    <md-toolbar
+            data-ng-include="'views/common/_dialog_header.html'">
+    </md-toolbar>
+    <md-dialog-content>
+        <form name="editForm">
+            <div layout="row">
+                <div flex="40">
+
+                    <div class="md-subhead">General</div>
+                    <md-input-container>
+                        <label>ID</label>
+                        <input ng-model="activeComponent.id" required md-maxlength="20" ng-disabled="activeComponent.status">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Template</label>
+                        <input ng-model="activeComponent.template_component" disabled>
+                    </md-input-container>
+
+                    <div ng-if="activeComponent.components">
+                        <div class="md-subhead">Components</div>
+                        <md-input-container data-ng-repeat="dependencyComponent in activeComponent.components">
+                            <label>{{ dependencyComponent.template_component }}</label>
+                            <input name="{{dependencyComponentParameter.id}}" type="text"
+                                   ng-model="dependencyComponent.id"/>
+                        </md-input-container>
+                    </div>
+
+                    <div ng-if="activeComponent.outputs">
+                        <div class="md-subhead">Outputs</div>
+                        <md-input-container data-ng-repeat="output in activeComponent.outputs">
+                            <label>{{ output.OutputKey }}</label>
+                            <input type="text"
+                                   ng-model="output.OutputValue"/>
+                        </md-input-container>
+                    </div>
+
+                </div>
+
+                <div flex="60" data-ng-include="'views/parameters/_parameters_list.html'"
+                     data-ng-init="parameters = activeComponent.parameters"></div>
+            </div>
+        </form>
+    </md-dialog-content>
+
+    <div class="md-actions" class="row">
+        <md-button data-ng-click="removeStackComponent(activeComponent.id)" class="md-raised md-warn">Remove</md-button>
+        <span flex></span>
+        <md-button data-ng-click="closeDialog()" class="md-raised md-primary" ng-disabled="!editForm.$valid">Save</md-button>
+    </div>
+
+</md-dialog>

@@ -1,0 +1,52 @@
+<md-dialog aria-label="{{environment.name}}" edit-environment>
+    <md-toolbar
+            data-ng-include="'views/common/_dialog_header.html'">
+    </md-toolbar>
+    <md-dialog-content>
+
+        <form name="mainForm">
+            <div layout="row">
+                <div flex="1">
+                    <div class="md-subhead">General</div>
+                    <div layout="row">
+                        <md-input-container flex="10">
+                            <label>Id</label>
+                            <input ng-model="environment.id" readonly>
+                        </md-input-container>
+
+                        <md-input-container flex="90">
+                            <label>Name</label>
+                            <input name="name" ng-model="environment.name" required>
+
+                            <div ng-messages="environment.name.$error">
+                                <div ng-message="required">message</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container flex="1">
+                            <label>created at</label>
+                            <input ng-model="environment.created_at" readonly>
+                        </md-input-container>
+                        <md-input-container flex="1">
+                            <label>updated at</label>
+                            <input ng-model="environment.updated_at" readonly>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div flex="1"
+                     data-ng-if="environment.parameters"
+                     data-ng-include="'views/parameters/_parameters_list.html'"
+                     data-ng-init="parameters = environment.parameters">
+                </div>
+
+            </div>
+        </form>
+    </md-dialog-content>
+    <div class="md-actions" class="row">
+        <md-button data-ng-click="removeEnvironment(environment, $event)" ng-if="environment.id" class="md-raised md-warn">Remove</md-button>
+        <span flex></span>
+        <md-button data-ng-click="saveEnvironment(environment, $event)" class="md-raised md-primary" ng-disabled="!mainForm.$valid">Save</md-button>
+    </div>
+</md-dialog>

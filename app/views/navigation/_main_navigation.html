@@ -1,0 +1,10 @@
+<md-toolbar>
+    <span class="md-toolbar-tools">Navigation</span>
+</md-toolbar>
+<md-content layout-padding>
+    <md-list>
+        <md-list-item ng-repeat="item in items" ng-click="navigateTo(item.location, $event)">
+            <p>{{ item.title }}</p>
+        </md-list-item>
+    </md-list>
+</md-content>

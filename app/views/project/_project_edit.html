@@ -1,0 +1,61 @@
+<md-dialog aria-label="{{project.name}}" edit-project>
+    <md-toolbar
+            data-ng-include="'views/common/_dialog_header.html'">
+    </md-toolbar>
+    <md-dialog-content>
+        <form name="editForm">
+            <div layout="row">
+                <div flex="1">
+                    <div class="md-subhead">General</div>
+                    <div layout="row">
+                        <md-input-container flex="10">
+                            <label>Id</label>
+                            <input ng-model="project.id" readonly>
+                        </md-input-container>
+
+                        <md-input-container flex="90">
+                            <label>Name</label>
+                            <input name="name" ng-model="project.name" required>
+
+                            <div ng-messages="project.name.$error">
+                                <div ng-message="required">message</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container flex>
+                            <label>scm_link</label>
+                            <input ng-model="project.scm_link" required>
+
+                            <div ng-messages="project.scm_link.$error">
+                                <div ng-message="required">message</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container flex="1">
+                            <label>created at</label>
+                            <input ng-model="project.created_at" readonly>
+                        </md-input-container>
+                        <md-input-container flex="1">
+                            <label>updated at</label>
+                            <input ng-model="project.updated_at" readonly>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div flex="1"
+                     data-ng-if="project.parameters"
+                     data-ng-include="'views/parameters/_parameters_list.html'"
+                     data-ng-init="parameters = project.parameters">
+                </div>
+
+            </div>
+        </form>
+    </md-dialog-content>
+    <div class="md-actions" class="row">
+        <md-button data-ng-click="removeProject(project, $event)" ng-if="project.id" class="md-raised md-warn">Remove</md-button>
+        <span flex></span>
+        <md-button data-ng-click="saveProject(project, $event)" class="md-raised md-primary" ng-disabled="!editForm.$valid">Save</md-button>
+    </div>
+</md-dialog>

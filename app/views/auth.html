@@ -1,0 +1,18 @@
+<md-content layout="row" layout-align="center center" flex>
+    <form name="authForm">
+        <div layout-align="center center" layout="column" style="padding: 20px; color: gray">
+            [ highcore ]
+        </div>
+        <section layout="column" style="min-width: 260px;">
+            <md-input-container flex >
+                <label>Username</label>
+                <input required ng-model="user.username" type="text">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Password</label>
+                <input required ng-model="user.password" type="password" name="password">
+            </md-input-container>
+            <md-button flex md-no-ink class="md-primary" ng-disabled="!authForm.$valid" ng-click="login()">Login</md-button>
+        </section>
+    </form>
+</md-content>

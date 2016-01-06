@@ -1,0 +1,8 @@
+<section layout="row" layout-padding data-component-id="grid-tools-top" >
+    <md-select placeholder="Stack" ng-model="stack.id" value="stack.stackId">
+        <md-option data-ng-disabled="_stack.id == stack.id" data-ng-repeat="_stack in stacks" value="{{_stack.id}}" data-ng-click="navigateTo('/stacks/' + _stack.id)">{{_stack.name}}</md-option>
+    </md-select>
+    <!-- <md-icon md-svg-src="images/icons/save.svg"         data-ng-click=""></md-icon>
+    <md-icon md-svg-src="images/icons/notification.svg" data-ng-click=""></md-icon>
+    <md-icon md-svg-src="images/icons/settings.svg"     data-ng-click=""></md-icon> -->
+</section>

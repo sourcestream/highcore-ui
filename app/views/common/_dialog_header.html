@@ -1,0 +1,10 @@
+<div class="md-toolbar-tools">
+    <h2 class="md-flex">
+        <span data-ng-if="project">{{ project.name }}</span>
+        <span data-ng-if="environment"> \ {{ environment.name }}</span>
+        <span data-ng-if="stack"> \ {{ stack.name }} </span>
+        <span data-ng-if="activeComponent">{{ activeComponent.id }} </span>
+    </h2>
+    <div flex></div>
+    <md-icon data-ng-click="closeDialog($event)" md-svg-src="images/icons/close.svg"></md-icon>
+</div>

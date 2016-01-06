@@ -1,0 +1,9 @@
+#componentEdit {
+  [data-default] {
+    border: rem-calc(1) solid #3a945b;
+  }
+  [data-custom] {
+    border: rem-calc(1) solid #cf2a0e;
+  }
+}
+

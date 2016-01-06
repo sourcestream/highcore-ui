@@ -1,0 +1,23 @@
+
+
+section[data-component-id="grid-tools-top"] {
+  background-color: $default-toolbar-bg-color;
+  color: white;
+  md-icon {
+    color: white;
+    margin: rem-calc(4);
+  }
+  md-select {
+    @include reset-box-model();
+    md-select-label {
+      min-width: rem-calc(200);
+    }
+  }
+}
+
+section[data-component-id="grid-tools-bottom"] {
+  //background-color: $default-toolbar-bg-color;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

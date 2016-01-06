@@ -1,0 +1,24 @@
+<md-content data-component-id="drawer" data-drawer-position="right" data-drawer-id="grid-right" data-drawer-state="closed" layout="row" >
+    <section data-component-id="drawer-navigation" layout="column" data-ng-click="toggleDrawer('grid-right')">
+        <md-button class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-src="images/icons/notification.svg" data-ng-click="toggleDrawer('grid-right')"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Sttings">
+            <md-icon md-svg-src="images/icons/add.svg" data-ng-click="toggleDrawer('grid-right')"></md-icon>
+        </md-button>
+        <span flex></span>
+    </section>
+    <section flex data-component-id="drawer-content" layout="column">
+        <md-tabs flex>
+            <md-tab label="Logs">
+                <div data-ng-include="'views/stack/_logs-list.html'"></div>
+            </md-tab>
+            <md-tab label="Parameters" ng-disabled="true">
+
+            </md-tab>
+            <md-tab label="Versions" ng-disabled="true">
+
+            </md-tab>
+        </md-tabs>
+    </section>
+</md-content>

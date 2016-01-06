@@ -1,0 +1,10 @@
+md-icon {
+  @include disable-selection();
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+*:focus {
+  outline: 0;
+}

@@ -1,0 +1,47 @@
+[data-component-id="drawer"] {
+  position: absolute;
+  @include opacity(0.9);
+  @include box-shadow();
+  [data-component-id="drawer-navigation"] {
+    background-color: $default-toolbar-bg-color;
+    md-icon {
+      color: white;
+    }
+  }
+  [data-component-id="drawer-navigation"] {
+    &[data-ng-click], &[ng-click] {
+      cursor: pointer;
+    }
+  }
+  &[data-drawer-position="right"] {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    &[data-drawer-state="closed"] {
+      right: - $default-drawer-right-content-width;
+    }
+    [data-component-id="drawer-navigation"] {
+      &[data-ng-click],&[ng-click] {
+        cursor: pointer;
+      }
+      background-color: $default-toolbar-bg-color;
+      width: $default-drawer-navigation-width;
+    }
+    [data-component-id="drawer-content"] {
+      width: $default-drawer-right-content-width;
+    }
+  }
+  &[data-drawer-position="bottom"] {
+    right: 0;
+    left: 0;
+    bottom: 0;
+    &[data-drawer-state="closed"] {
+      bottom: - $default-drawer-bottom-content-height;
+    }
+    width: 100%;
+    [data-component-id="drawer-content"] {
+      min-height: $default-drawer-bottom-content-height;
+    }
+  }
+
+}

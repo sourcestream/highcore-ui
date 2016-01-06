@@ -1,0 +1,22 @@
+svg[stack-grid] {
+  background-color: #434343;
+  background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+  background-size: rem-calc(40) rem-calc(40);
+
+  text[component-ui="title"] {
+    fill: white;
+  }
+
+  [component-status] {
+    //text-transform: lowercase;
+  }
+
+  //left: rem-calc(200);
+  //position: fixed;
+  //left: 0;
+  //right: 0;
+  //bottom: 0;
+  //top: $default-toolbar-height;
+  width: 100%;
+  height: 100%;
+}

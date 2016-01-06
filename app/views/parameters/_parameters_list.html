@@ -1,0 +1,29 @@
+<div data-ng-controller="ParameterCtrl">
+    <div layout="row">
+        <div class="md-subhead md-flex" >Parameters</div>
+        <span flex></span>
+        <md-icon md-svg-icon="images/icons/add.svg"  data-ng-click="addParameter()"></md-icon>
+    </div>
+
+
+    <div ng-repeat="parameter in parameters" layout="row">
+        <div flex layout="row">
+            <md-input-container flex="40">
+                <label>key</label>
+                <input ng-model="parameter.id" required>
+            </md-input-container>
+            <md-input-container flex="60">
+                <label>value</label>
+                <input ng-model="parameter.value">
+            </md-input-container>
+        </div>
+        <md-icon md-svg-icon="images/icons/delete.svg"  data-ng-click="removeParameter($index)"></md-icon>
+    </div>
+</div>
+
+<!--<md-input-container ng-repeat="parameter in parameters">
+    <label>{{parameter.id}}</label>
+    <input ng-model="parameter.value">
+</md-input-container> -->
+
+

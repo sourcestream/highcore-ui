@@ -1,0 +1,16 @@
+<md-toolbar>
+    <div class="md-toolbar-tools" ng-if="user">
+        <md-button class="md-icon-button" aria-label="Settings" data-ng-click="toggleNavigation()">
+            <md-icon md-svg-icon="images/icons/menu.svg"></md-icon>
+        </md-button>
+        <h2>
+            <span>highcore</span>
+        </h2>
+        <span flex></span>
+
+        <md-button ng-click="logout()">
+            log out {{ user.name }}
+        </md-button>
+
+    </div>
+</md-toolbar>
