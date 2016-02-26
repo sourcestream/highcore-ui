@@ -54,8 +54,8 @@ angular.module('highcoreWebUI')
                 $mdSidenav('templateComponents').toggle();
             };
 
-            $scope.downloadTemplate = function() {
-                window.open('/api/stacks/' + stackId + '/templates/cloudformation', '_blank');
+            $scope.downloadTemplate = function(diff) {
+                window.open('/api/stacks/' + stackId + '/templates/cloudformation' + (diff == true ? '?diff=true': ''), '_blank');
             };
 
             $scope.editComponent = function (component) {
