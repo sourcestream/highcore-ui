@@ -113,6 +113,17 @@ angular.module('highcoreWebUI')
                 $mdDialog.hide();
             };
 
+            $scope.copyStack = function (stack, $event) {
+              stackService.copy({
+                id: stack.id
+              }, {
+                name: 'Copy of ' + stack.name
+              }, function () {
+                  $mdDialog.hide();
+                  loadStacks();
+              });
+            }
+
             $scope.saveStack = function (stack, $event) {
                 /*if (stack.relatedStack) { //TODO remove after a better UI solution
                     stack.stacks = [{ name: stack.relatedStack }];
