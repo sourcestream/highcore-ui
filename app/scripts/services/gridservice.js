@@ -30,7 +30,7 @@ angular.module('highcoreWebUI')
 
                 if (component.components) {
                     angular.forEach(component.components, function (dependencyComponent) {
-                        if (!this.getStackComponentById(dependencyComponent.id)) {
+                        if (dependencyComponent.required && !this.getStackComponentById(dependencyComponent.id)) {
                             isValid = false;
                             angular.forEach(this.getUIConnectionByOriginId(componentId), function(connection) {
                                 var targetId = connection.attr('target-id');

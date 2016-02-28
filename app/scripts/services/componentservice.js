@@ -56,6 +56,7 @@ angular.module('highcoreWebUI')
                             var _c = {}
                             _c[parameter.id] = component.id;
                             _c['template_component'] = component.id;
+                            _c['required'] = 'required' in parameter ? parameter.required : true;
                             components.push(_c);
                         })
                     })
