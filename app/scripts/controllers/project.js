@@ -66,6 +66,17 @@ angular.module('highcoreWebUI')
                 $mdDialog.hide();
             };
 
+            $scope.copyProject = function (project, $event) {
+                projectService.copy({
+                    id: project.id
+                }, {
+                    name: 'Copy of ' + project.name
+                }, function () {
+                    $mdDialog.hide();
+                    loadProjects();
+                });
+            };
+
             $scope.saveProject = function (project, $event) {
                 showMask();
                 if (project.id) {

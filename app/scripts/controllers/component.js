@@ -30,6 +30,10 @@ angular.module('highcoreWebUI')
             }
         };
 
+        $scope.copyStackComponent = function (componentId) {
+            gridService.copyStackComponent(componentId);
+        };
+
         $scope.removeStackComponent = function (componentId) {
 
 

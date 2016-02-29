@@ -13,6 +13,10 @@ angular.module('highcoreWebUI').service('projectService', ['$resource', 'errorHa
         'create': {
             method: 'POST'
         },
+        'copy': {
+            method: 'POST',
+            url: API_ENDPOINT + '/projects?source=/projects/:id'
+        },
         'get': {
             method: 'GET'
         },

@@ -80,6 +80,17 @@ angular.module('highcoreWebUI')
                     $mdDialog.hide();
                 };
 
+                $scope.copyEnvironment = function (environment, $event) {
+                    environmentService.copy({
+                        id: environment.id
+                    }, {
+                        name: 'Copy of ' + environment.name
+                    }, function () {
+                        $mdDialog.hide();
+                        loadEnvironments();
+                    });
+                };
+
                 $scope.saveEnvironment = function (environment, $event) {
                     showMask();
                     if (environment.id) {

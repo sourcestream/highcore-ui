@@ -71,6 +71,14 @@ angular.module('highcoreWebUI')
                 stack.components.push(component);
 
             },
+            copyStackComponent: function (componentId) {
+                console.log(componentId);
+                var component = angular.copy(this.getStackComponentById(componentId));
+                component.id = 'copy_of_' + component.id;
+                component.ui.position.x += 50;
+                component.ui.position.y += 50;
+                this.addComponent(this.stack, component);
+            },
             removeStackComponent: function (componentId) {
                 this.isStackValid();
                 var component = this.getStackComponentById(componentId),

@@ -122,7 +122,7 @@ angular.module('highcoreWebUI')
                   $mdDialog.hide();
                   loadStacks();
               });
-            }
+            };
 
             $scope.saveStack = function (stack, $event) {
                 /*if (stack.relatedStack) { //TODO remove after a better UI solution
