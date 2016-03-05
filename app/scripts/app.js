@@ -103,6 +103,10 @@ angular
                 templateUrl: 'views/grid.html',
                 controller: 'GridCtrl'
             })
+            .when('/templates', {
+                templateUrl: 'views/template.html',
+                controller: 'TemplateCtrl'
+            })
             .when('/projects', {
                 templateUrl: 'views/project.html',
                 controller: 'ProjectCtrl'

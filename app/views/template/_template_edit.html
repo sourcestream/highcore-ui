@@ -1,0 +1,66 @@
+<md-dialog aria-label="{{template.name}}" edit-template>
+    <md-toolbar
+            data-ng-include="'views/common/_dialog_header.html'">
+    </md-toolbar>
+    <md-dialog-content>
+        <form name="editForm">
+            <div layout="row">
+                <div flex="1">
+                    <div class="md-subhead">General</div>
+                    <div layout="row">
+                        <md-input-container flex="10">
+                            <label>Id</label>
+                            <input ng-model="template.id" readonly>
+                        </md-input-container>
+
+                        <md-input-container flex="90">
+                            <label>Name</label>
+                            <input name="name" ng-model="template.name" required>
+
+                            <div ng-messages="template.name.$error">
+                                <div ng-message="required">message</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container flex>
+                            <label>repository</label>
+                            <input ng-model="template.repository" required>
+
+                            <div ng-messages="template.repository.$error">
+                                <div ng-message="required">message</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container flex>
+                            <label>version</label>
+                            <input ng-model="template.refspec" required>
+
+                            <div ng-messages="template.refspec.$error">
+                                <div ng-message="required">message</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <md-input-container flex="1">
+                            <label>created at</label>
+                            <input ng-model="template.created_at" readonly>
+                        </md-input-container>
+                        <md-input-container flex="1">
+                            <label>updated at</label>
+                            <input ng-model="template.updated_at" readonly>
+                        </md-input-container>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </md-dialog-content>
+    <div class="md-actions" class="row">
+        <md-button data-ng-click="removeTemplate(template, $event)" ng-if="template.id" class="md-raised md-warn">Remove</md-button>
+        <span flex></span>
+        <md-button data-ng-click="copyTemplate(template, $event)" class="md-raised md-primary">Copy</md-button>
+        <md-button data-ng-click="saveTemplate(template, $event)" class="md-raised md-primary" ng-disabled="!editForm.$valid">Save</md-button>
+    </div>
+</md-dialog>

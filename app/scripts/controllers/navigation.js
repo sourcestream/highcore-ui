@@ -17,6 +17,10 @@ angular.module('highcoreWebUI')
                 {
                     title: 'Projects',
                     location : 'projects'
+                },
+                {
+                    title: 'Templates',
+                    location : 'templates'
                 }
             ];
 
