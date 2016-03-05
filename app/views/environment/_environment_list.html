@@ -2,7 +2,6 @@
     <md-subheader class="md-no-sticky">
         <div class="md-list-item-text" layout="row">
             <div flex>name</div>
-            <div flex column-type="number">parameters.length</div>
             <div flex column-type="date">created_at</div>
             <div flex column-type="date">updated_at</div>
             <div flex column-type="tools" flex>tools</div>
@@ -11,9 +10,6 @@
     <md-list-item class="md-3-line" ng-repeat="environment in environments">
         <div class="md-list-item-text"  layout="row" ng-click="navigateTo('/environments/' + environment.id)">
             <div flex>{{ environment.name }}</div>
-            <div flex column-type="number">
-                {{ environment.parameters.length }}
-            </div>
             <div flex column-type="date">{{ environment.created_at }}</div>
             <div flex column-type="date">{{ environment.updated_at }}</div>
             <div flex column-type="tools">
