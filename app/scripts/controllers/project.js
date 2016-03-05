@@ -53,12 +53,23 @@ angular.module('highcoreWebUI')
             }
 
             $scope.removeProject = function (project, $event) {
-                showMask();
-                project.$delete({
-                    projectId: project.id
-                }, function () {
-                    $mdDialog.hide();
-                    loadProjects();
+                var confirm = $mdDialog.confirm()
+                    .parent(angular.element(document.body))
+                    .title('Would you like to delete the project ' + project.name + '?')
+                    .content('All of the banks have agreed to forgive you your debts.')
+                    .ariaLabel('Delete confirmation')
+                    .ok('OK')
+                    .cancel('Cancel');
+                $mdDialog.show(confirm).then(function() {
+                    showMask();
+                    project.$delete({
+                        projectId: project.id
+                    }, function () {
+                        $mdDialog.hide();
+                        loadProjects();
+                    });
+                }, function() {
+                    //$scope.alert = 'You decided to keep your debt.';
                 });
             };
 
@@ -67,10 +78,11 @@ angular.module('highcoreWebUI')
             };
 
             $scope.copyProject = function (project, $event) {
+                showMask();
                 projectService.copy({
                     id: project.id
                 }, {
-                    name: 'Copy of ' + project.name
+                    name: 'copy-of-' + project.name
                 }, function () {
                     $mdDialog.hide();
                     loadProjects();
