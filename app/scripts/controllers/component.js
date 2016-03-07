@@ -30,19 +30,22 @@ angular.module('highcoreWebUI')
             }
         };
 
+        $scope.copyStackComponent = function (componentId) {
+            gridService.copyStackComponent(componentId);
+            $mdDialog.hide();
+        };
+
         $scope.removeStackComponent = function (componentId) {
-
-
             var confirm = $mdDialog.confirm()
                 .parent(angular.element(document.body))
                 .title('Would you like to delete the component ' + activeComponent.id + '?')
                 .content('All of the banks have agreed to forgive you your debts.')
                 .ariaLabel('Delete confirmation')
                 .ok('OK')
-                .cancel('Cancel')
+                .cancel('Cancel');
                 //.targetEvent(ev);
             $mdDialog.show(confirm).then(function() {
-                //$scope.alert = 'You decided to get rid of your debt.';
+                $mdDialog.hide();
                 gridService.removeStackComponent(componentId);
                 gridService.isStackValid();
                 delete $scope.activeComponent;

@@ -53,12 +53,13 @@ angular.module('highcoreWebUI')
                     var components = [];
                     angular.forEach(templateComponent.components, function (component) {
                         angular.forEach(component.parameters, function (parameter) {
-                            var _c = {}
+                            var _c = {};
                             _c[parameter.id] = component.id;
                             _c['template_component'] = component.id;
+                            _c['required'] = 'required' in parameter ? parameter.required : false;
                             components.push(_c);
                         })
-                    })
+                    });
                     component.components = components;
                 }
 

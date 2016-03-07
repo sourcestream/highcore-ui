@@ -13,6 +13,10 @@ angular.module('highcoreWebUI').service('environmentService', ['$resource', 'err
         'create': {
             method: 'POST'
         },
+        'copy': {
+            method: 'POST',
+            url: API_ENDPOINT + '/environments?source=/environments/:id'
+        },
         'get': {
             method: 'GET'
         },

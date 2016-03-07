@@ -86,6 +86,7 @@
     <div class="md-actions" class="row">
         <md-button data-ng-click="removeStack(stack, $event)" ng-if="stack.id" class="md-raised md-warn">Remove</md-button>
         <span flex></span>
+        <md-button data-ng-click="copyStack(stack, $event)" class="md-raised md-primary" ng-disabled="!mainForm.$valid">Copy</md-button>
         <md-button data-ng-click="saveStack(stack, $event)" class="md-raised md-primary" ng-disabled="!mainForm.$valid">Save</md-button>
     </div>
 </md-dialog>

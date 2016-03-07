@@ -23,16 +23,6 @@
                         </md-input-container>
                     </div>
                     <div layout="row">
-                        <md-input-container flex>
-                            <label>scm_link</label>
-                            <input ng-model="project.scm_link" required>
-
-                            <div ng-messages="project.scm_link.$error">
-                                <div ng-message="required">message</div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                    <div layout="row">
                         <md-input-container flex="1">
                             <label>created at</label>
                             <input ng-model="project.created_at" readonly>
@@ -56,6 +46,7 @@
     <div class="md-actions" class="row">
         <md-button data-ng-click="removeProject(project, $event)" ng-if="project.id" class="md-raised md-warn">Remove</md-button>
         <span flex></span>
+        <md-button data-ng-click="copyProject(project, $event)" class="md-raised md-primary">Copy</md-button>
         <md-button data-ng-click="saveProject(project, $event)" class="md-raised md-primary" ng-disabled="!editForm.$valid">Save</md-button>
     </div>
 </md-dialog>

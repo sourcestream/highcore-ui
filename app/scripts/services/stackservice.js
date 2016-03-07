@@ -13,6 +13,10 @@ angular.module('highcoreWebUI').service('stackService', ['$resource', 'errorHand
         'create': {
             method: 'POST'
         },
+        'copy': {
+          method: 'POST',
+          url: API_ENDPOINT + '/stacks?source=/stacks/:id'
+        },
         'get': {
             method: 'GET'
         },

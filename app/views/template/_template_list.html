@@ -1,0 +1,22 @@
+<md-list>
+    <md-subheader class="md-no-sticky" data-ng-if="!widgetMode" >
+        <div class="md-list-item-text"  layout="row">
+            <div flex>name</div>
+            <div flex column-type="repository">version</div>
+            <div flex column-type="date">created_at</div>
+            <div flex column-type="date">updated_at</div>
+            <div flex column-type="tools" flex>tools</div>
+        </div>
+    </md-subheader>
+    <md-list-item class="md-3-line" ng-repeat="template in templates">
+        <div class="md-list-item-text"  layout="row" ng-click="navigateTo('/templates/' + template.id)">
+            <div flex>{{ template.name }}</div>
+            <div flex>{{ template.refspec }}</div>
+            <div data-ng-if="!widgetMode" flex column-type="date">{{ template.created_at }}</div>
+            <div data-ng-if="!widgetMode" flex column-type="date">{{ template.updated_at }}</div>
+            <div data-ng-if="!widgetMode" flex column-type="tools">
+                <md-icon md-svg-src="images/icons/settings.svg" ng-click="showTemplateDetails(template, $event)"/>
+            </div>
+        </div>
+    </md-list-item>
+</md-list>

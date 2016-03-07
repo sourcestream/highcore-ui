@@ -2,71 +2,71 @@
 
 /**
  * @ngdoc function
- * @name highcoreWebUiApp.controller:ProjectCtrl
+ * @name highcoreWebUiApp.controller:TemplateCtrl
  * @description
- * # ProjectCtrl
+ * # TemplateCtrl
  * Controller of the highcoreWebUiApp
  */
 angular.module('highcoreWebUI')
-    .controller('ProjectCtrl', ['$scope', 'projectService', '$mdDialog', '$mdToast', function ($scope, projectService, $mdDialog, $mdToast) {
+    .controller('TemplateCtrl', ['$scope', 'templateService', '$mdDialog', '$mdToast', function ($scope, templateService, $mdDialog, $mdToast) {
 
-        var loadProjects = function () {
+        var loadTemplates = function () {
             showMask();
-            $scope.projects = projectService.query({}, function () {
+            $scope.templates = templateService.query({}, function () {
                 hideMask();
             });
         };
 
-        loadProjects();
+        loadTemplates();
 
-        $scope.showProjectDetails = function (project, $event) {
+        $scope.showTemplateDetails = function (template, $event) {
 
             if ($event) {
                 $event.stopPropagation();
             }
 
             $mdDialog.show({
-                templateUrl: 'views/project/_project_edit.html',
+                templateUrl: 'views/template/_template_edit.html',
                 locals: {
-                    project: project
+                    template: template
                 },
                 controller: openDialog
             });
         };
 
-        function openDialog($scope, $mdDialog, project) {
+        function openDialog($scope, $mdDialog, template) {
 
-            if (project) {
+            if (template) {
                 showMask();
-                $scope.project = projectService.get({
-                    projectId: project.id
-                }, function (project) {
-                    if (!project.parameters) {
-                        project.parameters = [];
-                    }
+                $scope.template = templateService.get({
+                    templateId: template.id
+                }, function (template) {
+//                    if (!template.parameters) {
+//                        template.parameters = [];
+//                    }
                     hideMask();
                 });
             } else {
-                $scope.project = {
+                $scope.template = {
                     parameters: []
                 };
             }
 
-            $scope.removeProject = function (project, $event) {
+            $scope.removeTemplate = function (template, $event) {
                 var confirm = $mdDialog.confirm()
                     .parent(angular.element(document.body))
-                    .title('Would you like to delete the project ' + project.name + '?')
+                    .title('Would you like to delete the template ' + template.name + '?')
                     .content('All of the banks have agreed to forgive you your debts.')
                     .ariaLabel('Delete confirmation')
                     .ok('OK')
                     .cancel('Cancel');
                 $mdDialog.show(confirm).then(function() {
                     showMask();
-                    project.$delete({
-                        projectId: project.id
+                    template.$delete({
+                        templateId: template.id
                     }, function () {
                         $mdDialog.hide();
-                        loadProjects();
+                        loadTemplates();
                     });
                 }, function() {
                     //$scope.alert = 'You decided to keep your debt.';
@@ -77,31 +77,31 @@ angular.module('highcoreWebUI')
                 $mdDialog.hide();
             };
 
-            $scope.copyProject = function (project, $event) {
+            $scope.copyTemplate = function (template, $event) {
                 showMask();
-                projectService.copy({
-                    id: project.id
+                templateService.copy({
+                    id: template.id
                 }, {
-                    name: 'copy-of-' + project.name
+                    name: 'copy-of-' + template.name
                 }, function () {
                     $mdDialog.hide();
-                    loadProjects();
+                    loadTemplatess();
                 });
             };
 
-            $scope.saveProject = function (project, $event) {
+            $scope.saveTemplate = function (template, $event) {
                 showMask();
-                if (project.id) {
-                    project.$save({
-                        projectId: project.id
+                if (template.id) {
+                    template.$save({
+                        templateId: template.id
                     }, function () {
                         $mdDialog.hide();
-                        loadProjects();
+                        loadTemplates();
                     });
                 } else {
-                    projectService.create({}, project, function () {
+                    templateService.create({}, template, function () {
                         $mdDialog.hide();
-                        loadProjects();
+                        loadTemplates();
                     });
                 }
             };

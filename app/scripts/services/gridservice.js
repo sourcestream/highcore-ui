@@ -30,7 +30,7 @@ angular.module('highcoreWebUI')
 
                 if (component.components) {
                     angular.forEach(component.components, function (dependencyComponent) {
-                        if (!this.getStackComponentById(dependencyComponent.id)) {
+                        if (dependencyComponent.required && !this.getStackComponentById(dependencyComponent.id)) {
                             isValid = false;
                             angular.forEach(this.getUIConnectionByOriginId(componentId), function(connection) {
                                 var targetId = connection.attr('target-id');
@@ -70,6 +70,14 @@ angular.module('highcoreWebUI')
                 }
                 stack.components.push(component);
 
+            },
+            copyStackComponent: function (componentId) {
+                console.log(componentId);
+                var component = angular.copy(this.getStackComponentById(componentId));
+                component.id = 'copy-of-' + component.id;
+                component.ui.position.x += 50;
+                component.ui.position.y += 50;
+                this.addComponent(this.stack, component);
             },
             removeStackComponent: function (componentId) {
                 this.isStackValid();

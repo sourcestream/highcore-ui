@@ -1,5 +1,11 @@
 <section layout="row" layout-padding data-component-id="grid-tools-bottom">
     <span flex></span>
+    <md-button class="md-fab" aria-label="diff template" ng-click="downloadTemplate(true)">
+        <md-icon md-svg-src="images/icons/diff.svg"></md-icon>
+        <md-tooltip>
+            Diff template
+        </md-tooltip>
+    </md-button>
     <md-button class="md-fab md-primary" aria-label="download template" ng-click="downloadTemplate()">
         <md-icon md-svg-src="images/icons/download.svg"></md-icon>
         <md-tooltip>

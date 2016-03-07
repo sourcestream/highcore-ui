@@ -100,17 +100,41 @@ angular.module('highcoreWebUI')
             $scope.querySearch = querySearch;
 
             $scope.removeStack = function (stack) {
-                showMask();
-                stack.$delete({
-                    stackId: $scope.stack.id
-                }, function () {
-                    $mdDialog.hide();
-                    loadStacks();
+                var confirm = $mdDialog.confirm()
+                    .parent(angular.element(document.body))
+                    .title('Would you like to delete the stack ' + stack.name + '?')
+                    .content('All of the banks have agreed to forgive you your debts.')
+                    .ariaLabel('Delete confirmation')
+                    .ok('OK')
+                    .cancel('Cancel');
+                $mdDialog.show(confirm).then(function() {
+                    //$scope.alert = 'You decided to get rid of your debt.';
+                    showMask();
+                    stack.$delete({
+                        stackId: $scope.stack.id
+                    }, function () {
+                        $mdDialog.hide();
+                        loadStacks();
+                    });
+                }, function() {
+                    //$scope.alert = 'You decided to keep your debt.';
                 });
             };
 
             $scope.closeDialog = function () {
                 $mdDialog.hide();
+            };
+
+            $scope.copyStack = function (stack, $event) {
+                showMask();
+                stackService.copy({
+                  id: stack.id
+                }, {
+                  name: 'copy-of-' + stack.name
+                }, function () {
+                    $mdDialog.hide();
+                    loadStacks();
+                });
             };
 
             $scope.saveStack = function (stack, $event) {

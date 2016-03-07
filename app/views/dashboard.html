@@ -9,6 +9,17 @@
          data-ng-init="widgetMode = true"
          data-ng-include="'/views/project/_project_list.html'"/>
 </div>
+<div flex layout="column">
+    <div ressource-summary data-component-id="widget-container"/>
+    <md-subheader class="md-no-sticky" data-ng-if="!widgetMode" >
+        <div class="md-list-item-text"  layout="row">
+            Projects
+        </div>
+    </md-subheader>
+    <div data-ng-controller="TemplateCtrl"
+         data-ng-init="widgetMode = true"
+         data-ng-include="'/views/project/_template_list.html'"/>
+</div>
 <div flex layout="column" layout-margin>
     <div data-component-id="widget-container">
         <canvas id="line" class="chart chart-line" data="data"

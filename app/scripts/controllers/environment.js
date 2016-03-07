@@ -67,17 +67,40 @@ angular.module('highcoreWebUI')
                 }
 
                 $scope.removeEnvironment = function (environment, $event) {
-                    showMask();
-                    environment.$delete({
-                        environmentId: environment.id
-                    }, function () {
-                        $mdDialog.hide();
-                        loadEnvironments();
+                    var confirm = $mdDialog.confirm()
+                        .parent(angular.element(document.body))
+                        .title('Would you like to delete the environment ' + environment.name + '?')
+                        .content('All of the banks have agreed to forgive you your debts.')
+                        .ariaLabel('Delete confirmation')
+                        .ok('OK')
+                        .cancel('Cancel');
+                    $mdDialog.show(confirm).then(function() {
+                        showMask();
+                        environment.$delete({
+                            environmentId: environment.id
+                        }, function () {
+                            $mdDialog.hide();
+                            loadEnvironments();
+                        });
+                    }, function() {
+                        //$scope.alert = 'You decided to keep your debt.';
                     });
                 };
 
                 $scope.closeDialog = function () {
                     $mdDialog.hide();
+                };
+
+                $scope.copyEnvironment = function (environment, $event) {
+                    showMask();
+                    environmentService.copy({
+                        id: environment.id
+                    }, {
+                        name: 'copy-of-' + environment.name
+                    }, function () {
+                        $mdDialog.hide();
+                        loadEnvironments();
+                    });
                 };
 
                 $scope.saveEnvironment = function (environment, $event) {

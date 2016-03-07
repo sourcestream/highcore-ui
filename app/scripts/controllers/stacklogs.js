@@ -15,6 +15,6 @@ angular.module('highcoreWebUI')
                 stackId: stackId
             });
         };
-
-        $scope.reloadList(stackId);
+//        TODO reload only if the stack is provisioned
+//            $scope.reloadList(stackId);
     }]);
