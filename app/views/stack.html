@@ -2,7 +2,8 @@
     <md-card>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2 class="md-flex">{{project.name}} \ {{ environment.name }}</h2>
+                <h2 class="md-flex" data-ng-if="template">{{template.name}}</h2>
+                <h2 class="md-flex" data-ng-if="project">{{project.name}} \ {{ environment.name }}</h2>
                 <span flex></span>
                 <md-button data-ng-click="showStackDetails()"
                            class="md-raised md-primary" aria-label="create stack">

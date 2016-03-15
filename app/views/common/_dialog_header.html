@@ -1,5 +1,6 @@
 <div class="md-toolbar-tools">
     <h2 class="md-flex">
+        <span data-ng-if="template">{{ template.name }}</span>
         <span data-ng-if="project">{{ project.name }}</span>
         <span data-ng-if="environment"> \ {{ environment.name }}</span>
         <span data-ng-if="stack"> \ {{ stack.name }} </span>
