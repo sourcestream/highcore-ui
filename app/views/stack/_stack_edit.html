@@ -28,7 +28,7 @@
                             <md-input-container>
                                 <label>Template</label>
                                 <md-select flex ng-model="stack.template_id">
-                                    <md-option ng-value="template.id" ng-repeat="template in templates">{{ template.name }}</md-option>
+                                    <md-option ng-value="template.id" ng-repeat="template in templates">{{ template.name }} <label>@{{ template.refspec }}</label></md-option>
                                 </md-select>
                             </md-input-container>
                         </div>

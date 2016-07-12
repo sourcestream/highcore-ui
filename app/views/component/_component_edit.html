@@ -18,6 +18,10 @@
                         <input ng-model="activeComponent.template_component" disabled>
                     </md-input-container>
 
+                    <md-checkbox ng-model="activeComponent.disabled">
+                        <label>Disabled</label>
+                    </md-checkbox>
+
                     <div ng-if="activeComponent.components">
                         <div class="md-subhead">Components</div>
                         <md-input-container data-ng-repeat="dependencyComponent in activeComponent.components">

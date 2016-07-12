@@ -107,6 +107,10 @@ angular
                 templateUrl: 'views/template.html',
                 controller: 'TemplateCtrl'
             })
+            .when('/templates/:templateId', {
+                templateUrl: 'views/stack.html',
+                controller: 'StackCtrl'
+            })
             .when('/projects', {
                 templateUrl: 'views/project.html',
                 controller: 'ProjectCtrl'

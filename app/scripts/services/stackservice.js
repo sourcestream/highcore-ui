@@ -20,10 +20,15 @@ angular.module('highcoreWebUI').service('stackService', ['$resource', 'errorHand
         'get': {
             method: 'GET'
         },
-        'query': {
+        'queryByEnvironment': {
             method: 'GET',
             isArray: true,
             url: API_ENDPOINT + '/environments/:environmentId/stacks'
+        },
+        'queryByTemplate': {
+            method: 'GET',
+            isArray: true,
+            url: API_ENDPOINT + '/templates/:templateId/stacks'
         },
         'save': {
             method: 'PUT'

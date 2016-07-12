@@ -8,32 +8,37 @@
  * Controller of the highcoreWebUiApp
  */
 angular.module('highcoreWebUI')
-    .controller('StackCtrl', ['$scope', 'stackService', 'environmentService', 'projectService', 'templateService', '$routeParams', '$mdDialog',
-        function ($scope, stackService, environmentService, projectService, templateService, $routeParams, $mdDialog) {
+    .controller('StackCtrl', ['$scope', 'stackService', 'environmentService', 'projectService', 'templateService', '$routeParams', '$mdDialog', '$filter',
+        function ($scope, stackService, environmentService, projectService, templateService, $routeParams, $mdDialog, $filter) {
 
-            var environmentId = $routeParams.environmentId,
-                environment = environmentService.get({
-                    environmentId : environmentId
-                }, function(data) {
+            if ('environmentId' in $routeParams) {
+                var environmentId = $routeParams.environmentId;
+                $scope.environment = environmentService.get({
+                    environmentId: environmentId
+                }, function (data) {
                     $scope.project = projectService.get({
                         projectId: data.project_id
                     })
                 });
+            }
 
             var templates = templateService.query();
-
             $scope.templates   = templates;
-            $scope.environment = environment;
+
+            if ('templateId' in $routeParams) {
+                $scope.template = templateService.get({
+                    templateId: $routeParams.templateId
+                });
+            }
 
         var loadStacks = function () {
             showMask();
-            $scope.stacks = stackService.query({
-                environmentId : $routeParams.environmentId
-            }, function (data) {
+            var callback = function (data) {
                 hideMask();
-
-                //$scope.showStackDetails(data[1]);
-            });
+            };
+            $scope.stacks = 'environmentId' in $routeParams
+                ? stackService.queryByEnvironment({environmentId : $routeParams.environmentId}, callback)
+                : stackService.queryByTemplate({templateId : $routeParams.templateId}, callback);
         };
 
         loadStacks();

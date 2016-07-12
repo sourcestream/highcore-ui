@@ -142,7 +142,7 @@ angular.module('highcoreWebUI')
                 }, true);
 
                 $scope.$watch('stack', onStackChange, true);
-                $scope.stacks = stackService.query({
+                $scope.stacks = stackService.queryByEnvironment({
                     environmentId: $scope.stack.environment_id
                 });
 
