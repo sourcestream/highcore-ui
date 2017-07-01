@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+
+  ui:
+    image: sourcestream/highcore-ui:latest-SNAPSHOT
+    volumes:
+      - /etc/hosts:/etc/hosts:ro
+    ports:
+      - 8080:8080
+      - 3000:3000
+    environment:
+      ENDPOINT: 172.17.0.1:80
+      DOMAIN: highcore.local
