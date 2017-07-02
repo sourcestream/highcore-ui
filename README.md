@@ -46,6 +46,6 @@ Docker
     docker run -p 8080:8080 -p 3000:3000 -e ENDPOINT={HIGHCORE API ADDRESS} -e DOMAIN={HIGHCORE UI DOMAIN} -d sourcestream/highcore-ui:latest-SNAPSHOT
     
 ## build your own docker image
-    docker build -t sourcestream/highcore-ui:latest-SNAPSHOT .
+    docker-compose build ui
 
 
