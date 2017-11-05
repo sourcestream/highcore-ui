@@ -6,7 +6,8 @@ MAINTAINER Angel Dimitrov <angel@sourcestream.de>
 RUN apt-get update \
     && apt-get install -y -qq rubygems build-essential ruby-dev \
     && rm -rf /var/lib/apt/lists/* \
-    && gem install sass compass --no-rdoc --no-ri \
+    && gem install --no-rdoc --no-ri sass -v 3.4.25 \
+    && gem install --no-rdoc --no-ri compass \
     && npm install -g bower grunt-cli
 
 ENV DOCKERIZE_VERSION v0.5.0
