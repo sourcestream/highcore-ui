@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+
+  api:
+    image: sourcestream/highcore-api:latest-SNAPSHOT
+
+  ui:
+    build: .
+    image: sourcestream/highcore-ui:latest-SNAPSHOT
+    ports:
+      - 8080:8080
+      - 3000:3000
+    environment:
+      ENDPOINT: http://highcore.local:80
+      DOMAIN: highcore.local
+
+  nginx:
+    build: .docker/nginx
+    volumes:
+      - $PWD/public:/app/public
+    ports:
+      - 80:80
+    depends_on:
+      - ui

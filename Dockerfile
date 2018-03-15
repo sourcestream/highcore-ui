@@ -1,7 +1,19 @@
 # Pull the highcore-ui base image
-FROM sourcestream/highcore-ui-base:0.2
+FROM node:7
 
 MAINTAINER Angel Dimitrov <angel@sourcestream.de>
+
+RUN apt-get update \
+    && apt-get install -y -qq rubygems build-essential ruby-dev \
+    && rm -rf /var/lib/apt/lists/* \
+    && gem install --no-rdoc --no-ri sass -v 3.4.25 \
+    && gem install --no-rdoc --no-ri compass \
+    && npm install -g bower grunt-cli
+
+ENV DOCKERIZE_VERSION v0.5.0
+ADD https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz /tmp/dockerize.tar.gz
+RUN tar -C /usr/local/bin -xzvf /tmp/dockerize.tar.gz \
+    && rm /tmp/dockerize.tar.gz
 
 # add highcore user
 RUN useradd -ms /bin/bash highcore
@@ -21,4 +33,4 @@ RUN grunt build
 # ŕun the app
 EXPOSE 8080
 EXPOSE 3000
-ENTRYPOINT node --harmony_arrow_functions --harmony_modules --harmony_strings index.js --domain=${DOMAIN} --endpoint=${ENDPOINT}
+ENTRYPOINT node index.js --domain=${DOMAIN} --endpoint=${ENDPOINT}
