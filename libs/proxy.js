@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 module.exports = (app, config) => {
 
     const apiProxy = httpProxy.createProxyServer({
+        changeOrigin: true,
         target: config.get('endpoint')
     });
 
